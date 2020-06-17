@@ -1,4 +1,4 @@
-package com.gangchat.chat;
+package com.gangchat;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
