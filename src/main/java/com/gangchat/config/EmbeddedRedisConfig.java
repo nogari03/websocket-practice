@@ -1,4 +1,4 @@
-package com.gangchat.chat.config;
+package com.gangchat.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

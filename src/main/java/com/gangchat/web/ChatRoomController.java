@@ -1,7 +1,12 @@
-package com.gangchat.chat.controller;
+package com.gangchat.web;
 
-import com.gangchat.chat.dto.ChatRoom;
+import com.gangchat.domain.chat.ChatRoom;
+import com.gangchat.domain.chat.ChatRoomRepository;
+import com.gangchat.domain.user.LoginInfo;
+import com.gangchat.service.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +18,8 @@ import java.util.List;
 @RequestMapping("/chat")
 public class ChatRoomController {
 
-    private final com.gangchat.chat.repo.ChatRoomRepository chatRoomRepository;
+    private final ChatRoomRepository chatRoomRepository;
+    private final JwtTokenProvider jwtTokenProvider;
 
     // 채팅 리스트 화면
     @GetMapping("/room")
@@ -25,7 +31,10 @@ public class ChatRoomController {
     @GetMapping("/rooms")
     @ResponseBody
     public List<ChatRoom> room() {
-        return chatRoomRepository.findAllRoom();
+        List<ChatRoom> chatRooms = chatRoomRepository.findAllRoom();
+        chatRooms.stream().forEach(room ->
+                room.setUserCount(chatRoomRepository.getUserCount(room.getRoomId())));
+        return chatRooms;
     }
 
     // 채팅방 생성
@@ -47,5 +56,17 @@ public class ChatRoomController {
     @ResponseBody
     public ChatRoom roomInfo(@PathVariable String roomId) {
         return chatRoomRepository.findRoomById(roomId);
+    }
+
+    @GetMapping("/user")
+    @ResponseBody
+    public LoginInfo getUserInfo(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        return
+                LoginInfo.builder()
+                .name(name)
+                .token(jwtTokenProvider.generateToken(name))
+                .build();
     }
 }

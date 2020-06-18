@@ -8,3 +8,8 @@ spring:
       enabled: false
     freemarker:
       cache: false
+  jwt:
+    secret: govlepel@$&amp;
+  mvc:
+    view:
+      suffix: .html

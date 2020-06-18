@@ -1,4 +1,4 @@
-package com.gangchat.chat.config;
+package com.gangchat.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -37,11 +37,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("happydaddy")
+                .withUser("test1")
                 .password("{noop}1234")
                 .roles("USER")
                 .and()
-                .withUser("angrydaddy")
+                .withUser("test2")
                 .password("{noop}1234")
                 .roles("USER")
                 .and()
