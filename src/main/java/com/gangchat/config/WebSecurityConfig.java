@@ -26,6 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/chat/**").hasRole("USER") // chat으로 시작하는 리소스에 대한 접근 권한 설정
+                .antMatchers("/main/**").hasRole("USER")
                 .anyRequest().permitAll(); // 나머지 리소스에 대한 접근 설정
     }
 
