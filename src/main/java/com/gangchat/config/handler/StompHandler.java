@@ -2,8 +2,8 @@ package com.gangchat.config.handler;
 
 import com.gangchat.domain.chat.ChatMessage;
 import com.gangchat.domain.chat.ChatRoomRepository;
-import com.gangchat.service.ChatService;
-import com.gangchat.service.JwtTokenProvider;
+import com.gangchat.service.chat.ChatService;
+import com.gangchat.service.auth.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.Message;

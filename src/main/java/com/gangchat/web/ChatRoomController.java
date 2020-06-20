@@ -3,7 +3,7 @@ package com.gangchat.web;
 import com.gangchat.domain.chat.ChatRoom;
 import com.gangchat.domain.chat.ChatRoomRepository;
 import com.gangchat.domain.user.LoginInfo;
-import com.gangchat.service.JwtTokenProvider;
+import com.gangchat.service.auth.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

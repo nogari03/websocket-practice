@@ -1,4 +1,4 @@
-package com.gangchat.service;
+package com.gangchat.service.chat;
 
 import com.gangchat.domain.chat.ChatMessage;
 import com.gangchat.domain.chat.ChatRoomRepository;
